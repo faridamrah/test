@@ -1,0 +1,23 @@
+name: Build Docker Image
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Cache Docker layers
+      uses: actions/cache@v2
+      with:
+        path: /var/lib/docker
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t farid:${{ github.ref_name}} .
