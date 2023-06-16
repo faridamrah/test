@@ -36,4 +36,4 @@ jobs:
           ${{ runner.os }}-buildx-
 
     - name: Build the Docker image
-      run: docker build --tag farid987/git-test:$(date +%s)
+      run: docker build --tag farid987/git-test:$(date +%s) .
