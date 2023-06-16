@@ -14,7 +14,7 @@ app.use(express.static('public'));
 
 // Route for the homepage
 app.get('/', (req, res) => {
-  res.send('Hello, Docker!');
+  res.send('Hello, World!');
 });
 
 // Route with dynamic parameter
