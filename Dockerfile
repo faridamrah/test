@@ -5,11 +5,9 @@ FROM node:14-alpine
 WORKDIR /build
 
 # Copy the package.json and yarn.lock files to the container
-COPY package.json yarn.lock /build/
+COPY . /build/
 
 # Install dependencies using Yarn
 RUN yarn install
-
-COPY . /build/
 
 CMD ["node", "script.js"]
