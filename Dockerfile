@@ -9,3 +9,5 @@ COPY . $PWD
 
 # Install dependencies using Yarn
 RUN yarn install
+
+CMD ["node", "script.js"]
