@@ -8,7 +8,7 @@ WORKDIR /build
 COPY package.json yarn.lock $PWD
 
 # Install dependencies using Yarn
-RUN yarn install
+RUN yarn install --frozen-lockfile
 
 COPY . $PWD
 
