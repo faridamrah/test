@@ -3,7 +3,7 @@ name: Random Version Workflow
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   generate-random-version:
