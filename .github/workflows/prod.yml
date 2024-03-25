@@ -40,8 +40,9 @@ jobs:
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
             with:
-              tag_name: 1.1.4
-              release_name: Release 1.1.4
+              commitish: master2
+              tag_name: 1.1.5
+              release_name: Release 1.1.5
               body: |
                 Changes in this Release
                 - First Change
