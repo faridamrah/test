@@ -7,20 +7,28 @@ on:
 
 jobs:
     build-and-publish:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Merge sandbox -> production
-            uses: devmasx/merge-branch@1.4.0
-            with:
-              type: now
-              from_branch: master
-              target_branch: master2
-              github_token: ${{ secrets.GITHUB_TOKEN }}
+        # runs-on: ubuntu-latest
+        # steps:
+        #   - name: Merge sandbox -> production
+        #     uses: devmasx/merge-branch@1.4.0
+        #     with:
+        #       type: now
+        #       from_branch: master
+        #       target_branch: master2
+        #       github_token: ${{ secrets.GITHUB_TOKEN }}
 
     # deploy-prod:
-    #     runs-on: 'ubuntu-latest'
-    #     environment: 'prod'
-    #     steps:
-    #       - name: Run a multi-line script
-    #         run: |
-    #               echo TEst
+        runs-on: 'ubuntu-latest'
+        steps:
+          - name: Run a multi-line script
+            run: |
+                  echo TEst
+
+
+          - name: checkout
+            uses: actions/checkout@v4
+            with:
+              ref: master2
+
+          - name: check
+            run: cat create.yml
