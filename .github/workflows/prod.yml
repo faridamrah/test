@@ -9,9 +9,16 @@ jobs:
     build-and-publish:
         runs-on: ubuntu-latest
         steps:
-        - name: Run a multi-line script
-          run: |
-                echo TEst1
+          - uses: trstringer/manual-approval@v1
+            with:
+              secret: ${{ github.TOKEN }}
+              approvers: faridamrah
+              minimum-approvals: 1
+              issue-title: "Deploying v1.3.5 to prod from staging"
+              issue-body: "Please approve or deny the deployment of version v1.3.5."
+              # exclude-workflow-initiator-as-approver: false
+              # additional-approved-words: ''
+              # additional-denied-words: ''
 
     deploy-prod:
         runs-on: 'ubuntu-latest'
