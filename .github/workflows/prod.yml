@@ -1,0 +1,22 @@
+name: Prod
+on:
+  push:
+    branches:
+      - master
+
+
+jobs:
+    build-and-publish:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Run a multi-line script
+          run: |
+                echo TEst1
+
+    deploy-prod:
+        runs-on: 'ubuntu-latest'
+        environment: 'prod'
+        steps:
+          - name: Run a multi-line script
+            run: |
+                  echo TEst
