@@ -19,8 +19,8 @@ jobs:
 
     # deploy-prod:
         runs-on: 'ubuntu-latest'
-        outputs:
-          output1: ${{ steps.get.outputs.TEST }}
+        # outputs:
+        #   output1: ${{ steps.get.outputs.TEST }}
         steps:
 
           - name: checkout
@@ -31,16 +31,20 @@ jobs:
             run: |
                echo "TEST=123" >> "$GITHUB_OUTPUT"
 
+          - name: test
+            run:
+                echo ${{ steps.get.outputs }}
 
-    GetEnv:
-      runs-on: 'ubuntu-latest'
-      needs: build-and-publish
-      steps:
-          - uses: actions/checkout@v4
-          - name: env
-            uses: ./.github/actions/hello-world-action
-            with:
-              test: ${{needs.build-and-publish.outputs.output1}}
+
+    # GetEnv:
+    #   runs-on: 'ubuntu-latest'
+    #   needs: build-and-publish
+    #   steps:
+    #       - uses: actions/checkout@v4
+    #       - name: env
+    #         uses: ./.github/actions/hello-world-action
+    #         with:
+    #           test: ${{needs.build-and-publish.outputs.output1}}
 
 
 
