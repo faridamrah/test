@@ -24,4 +24,4 @@ jobs:
       env: 
         random_version: "${{ env.RANDOM_VERSION }}"
       run: |
-        echo "Using Random Version Label: $random_version"
+        echo "Using Random Version Label: $random_version and $test"

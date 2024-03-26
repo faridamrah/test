@@ -22,30 +22,35 @@ jobs:
         steps:
           - name: Run a multi-line script
             run: |
-                  echo TEst
+               echo "TEST=123" >> $GITHUB_ENV
+
+          - name: env
+            uses: ./.github/workflows/random.yml
+            env:
+              test: "${{ env.TEST }}"
 
 
 
-          - name: checkout
-            uses: actions/checkout@v4
-            with:
-              ref: master2
+          # - name: checkout
+          #   uses: actions/checkout@v4
+          #   with:
+          #     ref: master2
 
-          - name: check
-            run: cat create.yml
+          # - name: check
+          #   run: cat create.yml
           
 
-          - name: Create Release
-            uses: actions/create-release@v1.1.4
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-            with:
-              commitish: master2
-              tag_name: 1.1.5
-              release_name: Release 1.1.5
-              body: |
-                Changes in this Release
-                - First Change
-                - Second Change
-              draft: false
-              prerelease: false
+          # - name: Create Release
+          #   uses: actions/create-release@v1.1.4
+          #   env:
+          #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+          #   with:
+          #     commitish: master2
+          #     tag_name: 1.1.5
+          #     release_name: Release 1.1.5
+          #     body: |
+          #       Changes in this Release
+          #       - First Change
+          #       - Second Change
+          #     draft: false
+          #     prerelease: false
