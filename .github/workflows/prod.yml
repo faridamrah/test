@@ -33,7 +33,7 @@ jobs:
 
           - name: test
             run:
-                echo ${{ steps.get.outputs }}
+                echo ${{ steps.get.outputs.TEST }}
 
 
     # GetEnv:
