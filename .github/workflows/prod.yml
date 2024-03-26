@@ -37,7 +37,7 @@ jobs:
       needs: build-and-publish
       steps:
           - name: env
-            uses: ./.github/workflows/random.yml
+            uses: ./.github/actions/hello-world-action
             env:
               test: ${{needs.build-and-publish.outputs.output1}}
 
