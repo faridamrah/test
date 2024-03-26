@@ -23,7 +23,5 @@ jobs:
         echo "RANDOM_VERSION=$random_version" >> $GITHUB_ENV
 
     - name: Use Random Version
-      env: 
-        random_version: "${{ env.RANDOM_VERSION }}"
       run: |
-        echo "Using Random Version Label: $random_version and $test"
+        echo "Using and ${{ inputs.test }}"
