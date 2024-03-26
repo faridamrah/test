@@ -2,6 +2,10 @@ name: Generate Random Version
 
 on:
   workflow_call:
+    inputs:
+      test:
+        required: true
+        type: string
 
 jobs:
   build:
