@@ -1,9 +1,7 @@
 name: Generate Random Version
 
 on:
-  push:
-    branches:
-      - master
+  workflow_call:
 
 jobs:
   build:
