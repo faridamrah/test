@@ -21,6 +21,7 @@ jobs:
         runs-on: 'ubuntu-latest'
         outputs:
           output1: ${{ steps.get.outputs.TEST }}
+          output2: ''
         steps:
 
           - name: checkout
@@ -32,13 +33,13 @@ jobs:
                echo "TEST=123" >> "$GITHUB_OUTPUT"
 
 
-    # build:
-    #   needs: build-and-publish
-    #   name: Build Image
-    #   uses: faridamrah/test/.github/workflows/random.yml@master
-    #   with:
-    #     TAG_SWARM: ${{ needs.}}
-    #     TAG_EARN: ${{ needs.MergeAndRelease.outputs.TAG_EARN }}
+    build:
+      needs: build-and-publish
+      name: Build Image
+      uses: faridamrah/test/.github/workflows/random.yml@master
+      with:
+        TAG_SWARM: ${{ needs.build-and-publish.outputs.output1}}
+        TAG_EARN: ${{ needs.build-and-publish.outputs.output2 }}
         # runs-on: ubuntu-latest
         # steps:
         #   - name: Merge sandbox -> production
