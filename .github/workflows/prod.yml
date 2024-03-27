@@ -20,8 +20,8 @@ jobs:
     # deploy-prod:
         runs-on: 'ubuntu-latest'
         outputs:
-          output1: ${{ steps.get.outputs.TEST }}
-          output2: ''
+          output1: ''
+          output2: ${{ steps.get.outputs.TEST }}
         steps:
 
           - name: checkout
