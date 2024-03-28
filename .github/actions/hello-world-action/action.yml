@@ -1,0 +1,40 @@
+name: Generate Random Version
+description: 'Greet someone'
+inputs:
+  test:
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Use Random Version
+      shell: bash
+      run: |
+        echo "$test"
+      env:
+        test: ${{ inputs.test }}
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v3
+
+    # - name: Generate Random Version
+    #   id: random_version
+    #   run: |
+    #     random_version="v$((RANDOM % 1000)).$((RANDOM % 100)).$((RANDOM % 100))"
+    #     echo "Random Version Label: $random_version"
+    #     echo "RANDOM_VERSION=$random_version" >> $GITHUB_ENV
+
+    # - name: Use Random Version
+    #   run: |
+    #     echo "${{ inputs.test }}""
+    #   env:
+    #     test: ${{}}

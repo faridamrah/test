@@ -1,27 +1,41 @@
-name: Generate Random Version
+name: BuildImage
 
 on:
-  push:
-    branches:
-      - master
+  workflow_call:
+    inputs:
+      TAG_SWARM:
+        type: string
+        required: false
+      TAG_EARN:
+        type: string
+        required: false
 
 jobs:
-  build:
+  build-swarm:
+    if: ${{ inputs.TAG_SWARM }}
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [16.x]
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Generate Random Version
-      id: random_version
-      run: |
-        random_version="v$((RANDOM % 1000)).$((RANDOM % 100)).$((RANDOM % 100))"
-        echo "Random Version Label: $random_version"
-        echo "RANDOM_VERSION=$random_version" >> $GITHUB_ENV
+      - name: TEst1
+        run:
+            echo ${{inputs.TAG_SWARM}}
 
-    - name: Use Random Version
-      env: 
-        random_version: "${{ env.RANDOM_VERSION }}"
-      run: |
-        echo "Using Random Version Label: $random_version"
+
+  build-earn:
+    if: ${{ inputs.TAG_EARN }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: TEst2
+        run:
+            echo ${{inputs.TAG_EARN}}
