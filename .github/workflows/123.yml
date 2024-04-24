@@ -12,6 +12,7 @@ on:
         - info
         - warning
         - debug
+        - test
 
 jobs:
   my-job:
